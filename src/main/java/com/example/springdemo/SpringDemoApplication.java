@@ -10,11 +10,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class SpringDemoApplication {
 
     public static void main(String[] args) {
-
-        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        Battery battery = context.getBean(Battery.class);
-
-        context.close();
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        var car1 = context.getBean(CarWithConstructor.class);
+        car1.drive();
+        var car2 = context.getBean(CarWithSetter.class);
+        car2.drive();
+        var car3 = context.getBean(CarWithField.class);
+        car3.drive();
     }
 
 }
