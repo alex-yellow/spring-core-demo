@@ -1,0 +1,10 @@
+package com.example.springdemo;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Engine {
+    public void start(){
+        System.out.println("engine is start");
+    }
+}
