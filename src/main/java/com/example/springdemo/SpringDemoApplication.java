@@ -11,12 +11,18 @@ public class SpringDemoApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        var car1 = context.getBean(CarWithConstructor.class);
-        car1.drive();
-        var car2 = context.getBean(CarWithSetter.class);
-        car2.drive();
-        var car3 = context.getBean(CarWithField.class);
-        car3.drive();
+        System.out.println("Singleton");
+        var s1 = context.getBean(singletonBean.class);
+        var s2 = context.getBean(singletonBean.class);
+        System.out.println(s1.hashCode());
+        System.out.println(s2.hashCode());
+
+        System.out.println("Prototype");
+        var p1 = context.getBean(prototypeBean.class);
+        var p2 = context.getBean(prototypeBean.class);
+
+        System.out.println(p1.hashCode());
+        System.out.println(p2.hashCode());
     }
 
 }
